@@ -10,8 +10,4 @@ class User < ActiveRecord::Base
   before_create do
     self.votes_left = 10
   end
-
-  def num_of_books_suggested_this_month
-    suggested_books.where('created_at >= ?', 1.month.ago).count
-  end
 end

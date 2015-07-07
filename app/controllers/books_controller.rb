@@ -13,20 +13,7 @@ class BooksController < ApplicationController
     # sesh = AmazonAPI.new(aws_iam)
     # locate = sesh.find_book params[:author], params[:title], #params[:isbn]
     locate = Book.new
-    if locate 
-      # uri = spot_track[1]
-      if true
-        book = Book.where(
-          author:       params[:author],
-          title:        params[:title],
-          isbn:         params[:isbn],
-          suggester_id: current_user.id,
-        ).first_or_create!
-        current_user.votes.create! book: book, value: 1
-      else
-        flash[:notice] = "You have suggested too many books. Wait til next time you host."
-      end
-    else
+    if locate != true
       flash[:notice] = "No book found, please try again."
     end
     redirect_to :new
