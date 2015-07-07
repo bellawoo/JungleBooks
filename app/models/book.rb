@@ -1,0 +1,21 @@
+class Book < ActiveRecord::Base
+  belongs_to :user
+
+  has_many :votes
+  has_many :users, through: :votes
+
+  validates_presence_of :title, :author
+  validates_uniqueness_of :title, scope: :author
+
+  def self.by_sort_letter
+    all.group_by { |s| s.sort_title_letter }
+  end
+
+  def total_votes
+    Vote.where(book_id: self.id).sum(:value)
+  end
+
+  def sort_title_letter
+    title.chars.first.upcase
+  end
+end
