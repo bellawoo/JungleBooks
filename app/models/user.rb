@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :books
 
   before_create do
-    self.votes_left = 1
+    self.votes_left = 10
   end
 
   def num_of_books_suggested_this_month

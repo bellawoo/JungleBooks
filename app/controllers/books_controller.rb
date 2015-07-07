@@ -1,51 +1,46 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
-  # GET /books
-  # GET /books.json
   def index
     @books = Book.all
   end
 
-  # GET /books/1
-  # GET /books/1.json
   def show
+    @book = Book.find(params[:id])
   end
 
-  # GET /books/new
   def new
-    @book = Book.new
+    # sesh = AmazonAPI.new(aws_iam)
+    # locate = sesh.find_book params[:author], params[:title], #params[:isbn]
+    locate = Book.new
+    if locate 
+      # uri = spot_track[1]
+      if true
+        book = Book.where(
+          author:       params[:author],
+          title:        params[:title],
+          isbn:         params[:isbn],
+          suggester_id: current_user.id,
+        ).first_or_create!
+        current_user.votes.create! book: book, value: 1
+      else
+        flash[:notice] = "You have suggested too many books. Wait til next time you host."
+      end
+    else
+      flash[:notice] = "No book found, please try again."
+    end
+    redirect_to :new
   end
 
-  # GET /books/1/edit
-  def edit
-  end
-
-  # POST /books
-  # POST /books.json
   def create
     @book = Book.new(book_params)
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to @book, notice: 'Book has been suggested and can now be voted on.' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /books/1
-  # PATCH/PUT /books/1.json
-  def update
-    respond_to do |format|
-      if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { render :show, status: :ok, location: @book }
-      else
-        format.html { render :edit }
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
@@ -61,13 +56,17 @@ class BooksController < ApplicationController
     end
   end
 
+  def total
+    @book = Book.find params[:book_id]
+    @book.total_votes
+    render json: { total: @book.total_votes }
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params[:book]
     end

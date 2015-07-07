@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, :class_name => "User", :foreign_key => "suggester_id"
 
   has_many :votes
   has_many :users, through: :votes
@@ -7,9 +7,9 @@ class Book < ActiveRecord::Base
   validates_presence_of :title, :author
   validates_uniqueness_of :title, scope: :author
 
-  def self.by_sort_letter
-    all.group_by { |s| s.sort_title_letter }
-  end
+  # def self.by_sort_letter
+  #   all.group_by { |s| s.sort_title_letter }
+  # end
 
   def total_votes
     Vote.where(book_id: self.id).sum(:value)
