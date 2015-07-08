@@ -2,7 +2,7 @@
 
 <div class = "form-group">
 <% if current_user.host? %>
-  <%= form_for(@book) do |f| %>
+  <%= form_for @book do |f| %>
     <%= f.text_field :title, label: "Book Title" %>
     <%= f.text_field :author, label: "Author" %>
     <%= f.primary "Submit" %>

@@ -1,5 +1,0 @@
-class AmazonAPI
-  def find_book
-    
-  end
-end

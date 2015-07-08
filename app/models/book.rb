@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+
   belongs_to :user, :class_name => "User", :foreign_key => "suggester_id"
 
   has_many :votes
@@ -18,4 +19,5 @@ class Book < ActiveRecord::Base
   def sort_title_letter
     title.chars.first.upcase
   end
+
 end

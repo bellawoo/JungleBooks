@@ -14,6 +14,7 @@ gem 'quiet_assets'
 gem 'pry-rails'
 gem 'devise'
 gem 'figaro'
+gem 'vacuum'
 
 group :development do
   gem 'better_errors'
