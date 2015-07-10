@@ -2,12 +2,13 @@
 
 <div class = "form-group">
 <% if current_user.host? %>
-  <%= form_for @book do |f| %>
-    <%= f.text_field :title, label: "Book Title" %>
-    <%= f.text_field :author, label: "Author" %>
-    <%= f.primary "Submit" %>
-  <% end %>
-</div>
+  <form method="GET" action="/books/select">
+  <input type="text" name="Title" placeholder="Title">
+  <input type="text" name="Author" placehodler="Author">
+  <!-- <input type="hidden" name="SearchIndex" value="Books"> -->
+  <button>Submit</button>
+  </form>
 <% end %>
+</div>
 
 <%= link_to 'Back', books_path %>

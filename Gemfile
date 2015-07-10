@@ -18,6 +18,7 @@ gem 'vacuum'
 
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'did_you_mean'
   gem 'sqlite3'
   gem 'spring'

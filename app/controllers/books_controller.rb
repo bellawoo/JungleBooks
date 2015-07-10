@@ -1,36 +1,33 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.all
   end
 
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:book])
   end
 
   def new
-    # sesh = AmazonAPI.new(aws_iam)
-    # locate = sesh.find_book params[:author], params[:title], #params[:isbn]
-    locate = Book.new
-    if locate != true
-      flash[:notice] = "No book found, please try again."
-    end
-    redirect_to :new
+    @book = Book.new
+  end
+
+  def select
+    api = AmazonAPI.new
+    books = api.book_lookup params[:Author], params[:Title]
   end
 
   def create
-    @book = Book.new(book_params)
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book has been suggested and can now be voted on.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @book.save
+    #     format.html { redirect_to @book, notice: 'Book has been suggested and can now be voted on.' }
+    #     format.json { render :show, status: :created, location: @book }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @book.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /books/1
@@ -48,13 +45,4 @@ class BooksController < ApplicationController
     @book.total_votes
     render json: { total: @book.total_votes }
   end
-
-  private
-    def set_book
-      @book = Book.find(params[:id])
-    end
-
-    def book_params
-      params[:book]
-    end
 end

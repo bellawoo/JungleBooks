@@ -6,13 +6,13 @@ class AmazonAPI
   Tag = Figaro.env.aws_associate_tag
 
   def book_lookup author, title
-    @request = Vacuum.new
-    @request.configure(
+    request = Vacuum.new
+    request.configure(
       aws_access_key_id: Key,
       aws_secret_access_key: Secret,
       associate_tag: Tag
     )
-    response = @request.item_search(
+    response = request.item_search(
       query: {
         "SearchIndex" => "Books",
         "Author" => author,
@@ -20,11 +20,17 @@ class AmazonAPI
         "ResponseGroup" => "Small, Reviews"
       }
       )
+    display_results response
   end
 
-  def display_results author, title
-    full_results = self.book_lookup author, title
-    full_results_obj = full_results.to_h
-    each_result = full_results_obj["ItemSearchResponse"]["Items"]["Item"]
+  def display_results response
+    full_results_obj = response.to_h
+    indv_result = full_results_obj["ItemSearchResponse"]["Items"]["Item"]
+    rel_elements = indv_result.each do |r|
+      book_details = []
+      book_details.push r["ItemAttributes"]
+      book_details.push r["CustomerReviews"]["IFrameURL"]
+    end
+    return rel_elements
   end
 end
