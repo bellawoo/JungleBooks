@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:book])
+    @book = Book.find(params[:id])
   end
 
   def new
@@ -14,20 +14,15 @@ class BooksController < ApplicationController
 
   def select
     api = AmazonAPI.new
-    books = api.book_lookup params[:Author], params[:Title]
+    @books = api.book_lookup params[:Author], params[:Title]
+    render :select
   end
 
   def create
-
-    # respond_to do |format|
-    #   if @book.save
-    #     format.html { redirect_to @book, notice: 'Book has been suggested and can now be voted on.' }
-    #     format.json { render :show, status: :created, location: @book }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @book.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    @book = Book.save_as_selection params[:title], params[:author], params[:customer_reviews]
+    @book.suggester_id = current_user.id
+    current_user.votes.create! book_id: self.id, value: 1
+    render :index
   end
 
   # DELETE /books/1

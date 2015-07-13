@@ -17,7 +17,7 @@ class AmazonAPI
         "SearchIndex" => "Books",
         "Author" => author,
         "Title" => title,
-        "ResponseGroup" => "Small, Reviews"
+        "ResponseGroup" => "Medium, Reviews"
       }
       )
     display_results response
@@ -25,12 +25,6 @@ class AmazonAPI
 
   def display_results response
     full_results_obj = response.to_h
-    indv_result = full_results_obj["ItemSearchResponse"]["Items"]["Item"]
-    rel_elements = indv_result.each do |r|
-      book_details = []
-      book_details.push r["ItemAttributes"]
-      book_details.push r["CustomerReviews"]["IFrameURL"]
-    end
-    return rel_elements
+    @books = full_results_obj["ItemSearchResponse"]["Items"]["Item"]
   end
 end
