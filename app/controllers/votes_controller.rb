@@ -6,7 +6,7 @@ class VotesController < ApplicationController
       vl = current_user.votes_left
       current_user.update(votes_left: vl -= 1)
     else
-      flash[:alert] = "You are out of votes!"
+      :alert = "You are out of votes!"
       status 400
     end
     redirect_to ("/")

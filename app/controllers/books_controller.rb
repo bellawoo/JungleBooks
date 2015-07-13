@@ -23,18 +23,17 @@ class BooksController < ApplicationController
     @book.suggester_id = current_user.id
     current_user.votes.create! book_id: self.id, value: 1
     if @book.save
-      flash[:notice] = "The book has been added and can now be voted on."
       redirect_to :index
+      :notice = "The book has been added and can now be voted on."
     else
-      flash[:notice] = "Something went wrong. Please try again."
-      redirect_to :new
+      redirect_to new_book_path
+      :notice = "Something went wrong. Please try again."
     end
 
   end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
   def destroy
+    @book = Book.find(params[:id])
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
