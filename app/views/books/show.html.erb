@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 <div>
-<p><%= @book.title %></p>
-<p>By <%= @book.author %></p>
+<%= link_to 'Vote For This Book', new_vote_path(:id => @book.id, :value => 1) %> |
+<%= link_to 'Back', books_path %>
+</div>
+<div>
+<h2><%= @book.title %></p>
+<h3>By <%= @book.author %></p>
 </div>
 <div class="review-frame">
 <iframe src="<%= @book.customer_reviews %>" seamless />
 </div>
-<%= link_to 'Vote', new_vote_path %> |
-<%= link_to 'Back', books_path %>
+

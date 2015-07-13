@@ -26,11 +26,6 @@ class Book < ActiveRecord::Base
       author: author,
       customer_reviews: customer_reviews
       ).first_or_create!
-    if self
-      flash[:notice] = "The book has been added and can now be voted on."
-    else
-      flash[:notice] = "Something went wrong. Please try again."
-    end
   end
 
 end

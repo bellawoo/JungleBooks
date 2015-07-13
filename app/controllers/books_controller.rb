@@ -22,7 +22,14 @@ class BooksController < ApplicationController
     @book = Book.save_as_selection params[:title], params[:author], params[:customer_reviews]
     @book.suggester_id = current_user.id
     current_user.votes.create! book_id: self.id, value: 1
-    render :index
+    if @book.save
+      flash[:notice] = "The book has been added and can now be voted on."
+      redirect_to :index
+    else
+      flash[:notice] = "Something went wrong. Please try again."
+      redirect_to :new
+    end
+
   end
 
   # DELETE /books/1
