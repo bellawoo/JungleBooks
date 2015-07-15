@@ -19,7 +19,7 @@
     <% @books.each do |book| %>
     <tr>
       <td><%= book["ItemAttributes"]["Title"] %></td>
-      <td> <%= book["ItemAttributes"]["Author"] %></td>
+      <td><%= book["ItemAttributes"]["Author"] %></td>
       <td><a href="<%= book["DetailPageURL"] %>">Amazon Listing</a></td>
       <td>
         <%= form_tag "/books", :remote => true %>
