@@ -24,10 +24,10 @@ class BooksController < ApplicationController
     current_user.votes.create! book_id: self.id, value: 1
     if @book.save
       redirect_to :index
-      :notice = "The book has been added and can now be voted on."
+      flash[:notice]= "The book has been added and can now be voted on."
     else
       redirect_to new_book_path
-      :notice = "Something went wrong. Please try again."
+      flash[:notice] = "Something went wrong. Please try again."
     end
 
   end
