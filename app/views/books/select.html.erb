@@ -22,7 +22,7 @@
       <td><%= book["ItemAttributes"]["Author"] %></td>
       <td><a href="<%= book["DetailPageURL"] %>">Amazon Listing</a></td>
       <td>
-        <%= form_tag "/books", :remote => true %>
+        <%= form_tag "/books" %>
          <input type= "hidden" name= "title" value= "<%= book["ItemAttributes"]["Title"] %>">
          <input type= "hidden" name= "author" value= "<%= book["ItemAttributes"]["Author"] %>">
          <input type= "hidden" name= "customer_reviews" value= "<%= book["CustomerReviews"]["IFrameURL"] %>">

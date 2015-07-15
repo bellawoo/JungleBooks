@@ -21,9 +21,9 @@ class BooksController < ApplicationController
   def create
     @book = Book.save_as_selection params[:title], params[:author], params[:customer_reviews]
     @book.suggester_id = current_user.id
-    current_user.votes.create! book_id: self.id, value: 1
+    current_user.votes.create! book_id: @book.id, value: 1
     if @book.save
-      redirect_to :index
+      redirect_to books_path
       flash[:notice]= "The book has been added and can now be voted on."
     else
       redirect_to new_book_path
