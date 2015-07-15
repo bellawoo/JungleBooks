@@ -16,7 +16,9 @@
         <td><%= book.title %></td>
         <td>by <%= book.author%></td>
         <td><%= link_to 'Show', book %></td>
+        <% if current_user.host? %>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -40,10 +40,4 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def total
-    @book = Book.find params[:book_id]
-    @book.total_votes
-    render json: { total: @book.total_votes }
-  end
 end

@@ -16,10 +16,6 @@ class Book < ActiveRecord::Base
     Vote.where(book_id: self.id).sum(:value)
   end
 
-  def sort_title_letter
-    title.chars.first.upcase
-  end
-
   def self.save_as_selection title, author, customer_reviews
       self.where(
       title: title,

@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :books
 
   before_create do
-    self.votes_left = 10
+    self.votes_left = 1
   end
 end

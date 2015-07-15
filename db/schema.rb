@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712222751) do
+ActiveRecord::Schema.define(version: 20150715222011) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",            null: false
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20150712222751) do
     t.integer "user_id"
     t.integer "book_id"
     t.integer "value"
+  end
+
+  create_table "winners", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "product_page"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
