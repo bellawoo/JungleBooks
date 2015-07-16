@@ -20,8 +20,7 @@ class WinningPick
     end
   end
 
-  def run!
-    book = winning_book
-
+  def self.run!
+    self.new
   end
 end

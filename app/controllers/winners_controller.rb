@@ -1,5 +1,6 @@
-class WinnerController < ApplicationController
+class WinnersController < ApplicationController
   def index
+    @most_recent_winner = Winner.last
     @winners = Winner.all
   end
 
@@ -7,7 +8,7 @@ class WinnerController < ApplicationController
     @winner = Winner.find(params[:id])
   end
 
-  def new
-    @winner = Winner.new.declare_winner
+  def create
+    @winner = WinningPick.new.run!
   end
 end

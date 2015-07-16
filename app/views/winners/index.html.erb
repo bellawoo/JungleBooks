@@ -1,0 +1,34 @@
+<h1>Winning Books</h1>
+<div>
+<h2>This month, we're reading...</h2>
+<h3><%= @most_recent_winner.title %></h3>
+<p>by <%= @most_recent_winner.author %></p>
+</div>
+<div>
+<h2>In the past, we've read...</h2>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <div class="result">
+  <tr>
+    <td>Title</td>
+    <td>Author</td>
+    <td></td>
+    <td></td>
+  </tr>
+    <% @winners.reverse.drop(1).each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.author%></td>
+      <td><a href="<%= book.product_page %>">Amazon Listing</a></td>
+    </tr>
+    </div>
+    <% end %>
+  </tbody>
+</table>
+</div>
