@@ -15,7 +15,9 @@ gem 'pry-rails'
 gem 'devise'
 gem 'figaro'
 gem 'vacuum'
-gem 'twitter-bootstrap-rails', '~>3.2.0'
+gem 'twitter-bootstrap-rails'
+gem "therubyracer"
+gem "less-rails"
 
 group :development do
   gem 'better_errors'
