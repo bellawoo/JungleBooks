@@ -24,4 +24,10 @@ class Book < ActiveRecord::Base
       ).first_or_create!
   end
 
+  def self.declare_winner
+    all_subs = []
+    Book.all.map { |b| all_subs.push b}
+    winner = all_subs.max_by { |w| w.total_votes}
+  end
+
 end

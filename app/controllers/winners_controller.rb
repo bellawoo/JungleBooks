@@ -10,5 +10,7 @@ class WinnersController < ApplicationController
 
   def create
     @winner = WinningPick.new.run!
+    redirect_to root_path
+    flash[:notice] = "The winning book has been chosen and a new round of voting is now open."
   end
 end

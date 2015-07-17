@@ -1,26 +1,33 @@
 class WinningPick
-  def winning_book
-    Winner.new.declare_winner
-  end
+  attr_reader :winner
+
+  # def winning_book
+  #   winner = Winner.new.declare_winner
+  #   record_winner winner
+  # end
 
   def record_winner
-    self.winning_book.save!
-  end
-
-  def reset_vote_count
-    User.each do |v|
-      v.votes_left = 1
-    end
+    winning_book = Book.declare_winner
+    @winner = Winner.create!(
+      title: winning_book.title,
+      author: winning_book.author,
+      product_page: winning_book.product_page
+    )
   end
 
   def reset_book_selections
-    @winner = self.record_winner
-    if @winner.save!
-      Book.all.destroy
+    if @winner
+      Book.destroy_all
     end
   end
 
-  def self.run!
-    self.new
+  def reset_vote_count
+    User.all.map { |v| v.votes_left = 1}
+  end
+
+  def run!
+    record_winner 
+    reset_vote_count
+    reset_book_selections
   end
 end
