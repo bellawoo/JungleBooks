@@ -1,36 +1,39 @@
-<p id="notice"><%= notice %></p>
-<h1>Search Results</h1>
+<div class="center-block">
+  <p id="notice"><%= notice %></p>
+  <h1>Search Results</h1>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <div class="result">
-  <tr>
-    <td>Title</td>
-    <td>Author</td>
-    <td></td>
-    <td></td>
-  </tr>
-    <% @books.each do |book| %>
-    <tr>
-      <td><%= book["ItemAttributes"]["Title"] %></td>
-      <td><%= book["ItemAttributes"]["Author"] %></td>
-      <td><a href="<%= book["DetailPageURL"] %>">Amazon Listing</a></td>
-      <td>
-        <%= form_tag "/books" %>
-         <input type= "hidden" name= "title" value= "<%= book["ItemAttributes"]["Title"] %>">
-         <input type= "hidden" name= "author" value= "<%= book["ItemAttributes"]["Author"] %>">
-         <input type= "hidden" name= "customer_reviews" value= "<%= book["CustomerReviews"]["IFrameURL"] %>">
-         <button class="select_result">Add This Book</button>
-        </form>
-      </td>
-    </tr>
-    </div>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+      <div class="result">
+      <tr>
+        <td>Title</td>
+        <td>Author</td>
+        <td></td>
+        <td></td>
+      </tr>
+        <% @books.each do |book| %>
+        <tr>
+          <td><%= book["ItemAttributes"]["Title"] %></td>
+          <td><%= book["ItemAttributes"]["Author"] %></td>
+          <td><a href="<%= book["DetailPageURL"] %>">Amazon Listing</a></td>
+          <td>
+            <%= form_tag "/books" %>
+             <input type= "hidden" name= "title" value= "<%= book["ItemAttributes"]["Title"] %>">
+             <input type= "hidden" name= "author" value= "<%= book["ItemAttributes"]["Author"] %>">
+             <input type= "hidden" name= "customer_reviews" value= "<%= book["CustomerReviews"]["IFrameURL"] %>">
+             <button class="btn btn-default btn-sm">Add This Book</button>
+            </form>
+          </td>
+        </tr>
+        </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

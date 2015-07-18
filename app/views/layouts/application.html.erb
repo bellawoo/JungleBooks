@@ -54,7 +54,7 @@
               <li><%= link_to "What We're Reading", winners_path %></li>
               <% if current_user.host? %>
               <li><%= link_to "Submit Your Suggestion", new_book_path %></li>
-              <li><%= link_to "Close Voting", winners_path, :action => :create, :method => :post %></li>
+              <li><%= link_to "Close Voting", winners_path, :action => :create, :method => :post, data: { confirm: 'Are you sure? This is final and cannot be reversed.'} %></li>
               <% end %>
               <% end %>
             </ul>

@@ -1,25 +1,35 @@
+<div class="center-block">
 <p id="notice"><%= notice %></p>
-
+<h1>Welcome!</h1>
+<p>The following books have been submitted by this month's host. Please vote on which book you'd like to read and discuss. Be sure you are 100% decided before voting - you only get one vote.</p>
 <h2>This Month's Suggestions</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Votes</td>
+        <td>Title</td>
+        <td>Author</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <% @books.each do |book| %>
       <tr>
         <td><%= book.total_votes %></td>
         <td><%= book.title %></td>
-        <td>by <%= book.author%></td>
+        <td><%= book.author%></td>
         <td><%= link_to 'Show', book %></td>
         <% if current_user.host? %>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>

@@ -1,0 +1,55 @@
+h1 {
+  font-family: pacifico, cursive;
+  font-size: 32px;
+  line-height: 56px;
+  color: #990000;
+}
+
+h2 {
+  font-family: raleway, sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 24px;
+  color: #bf3a00;
+}
+
+h3 {
+  font-family: raleway, sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 18px;
+  color: #990000;
+}
+
+h3 small {
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 16px;
+  color: #990000;
+}
+
+div.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div .col-lg-9 {
+  width: 680px;
+  margin: 0 auto;
+  padding: 10px;
+  color: #515b6f;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+div.on-page-nav {
+  font-size: 14px;
+  line-height: 20px;
+}

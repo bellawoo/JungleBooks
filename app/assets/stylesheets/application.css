@@ -9,29 +9,6 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
  *= require_tree .
  *= require_self
  */
-
-h1 {
-  font-family: pacifico, cursive;
-  font-size: 32px;
-  line-height: 56px;
-  color: #fff;
-}
-
-h2 {
-  font-family: raleway, sans-serif;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 24px;
-  color: #fff;
-}
-
-div .col-lg-9 {
-  width: 680px;
-  margin: 0 auto;
-  padding: 10px;
-  color: #515b6f;
-}

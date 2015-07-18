@@ -1,13 +1,16 @@
-<h1>Suggest New Books</h1>
-
-<div class = "form-group">
-<% if current_user.host? %>
-  <form method="GET" action="/books/select">
-  <input type="text" name="Title" placeholder="Title">
-  <input type="text" name="Author" placehodler="Author">
-  <button>Submit</button>
-  </form>
-<% end %>
+<div class="center-block">
+  <div class="on-page-nav">
+  <%= link_to ' Back', books_path %>
+  </div>
+  <h1>Suggest New Books</h1>
+  <p>Thanks for hosting book club this month! Use this tool to search for the books you'd like to enter into consideration.</p>
+  <div class = "form-group">
+  <% if current_user.host? %>
+    <form method="GET" action="/books/select">
+    <input type="text" name="Title" placeholder="Title">
+    <input type="text" name="Author" placeholder="Author">
+    <button>Submit</button>
+    </form>
+  <% end %>
+  </div>
 </div>
-
-<%= link_to 'Back', books_path %>
