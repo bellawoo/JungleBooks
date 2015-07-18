@@ -10,26 +10,17 @@
   <div class="table-responsive">
   <table class="table">
     <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th></th>
     </thead>
-
     <tbody>
-    <div class="result">
-    <tr>
-      <td>Title</td>
-      <td>Author</td>
-      <td></td>
-      <td></td>
-    </tr>
       <% @winners.reverse.drop(1).each do |book| %>
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author%></td>
         <td><a href="<%= book.product_page %>">Amazon Listing</a></td>
       </tr>
-      </div>
       <% end %>
     </tbody>
   </table>

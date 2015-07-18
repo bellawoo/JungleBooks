@@ -1,6 +1,5 @@
 body {
   background-image: url('http://i.imgur.com/jZKj0gU.jpg');
-  color: #333;
   font-family: raleway, sans-serif;
   font-size: 12px;
   line-height: 18px;
@@ -10,7 +9,7 @@ p, ol, ul, td {
   font-family: raleway, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  color: #fff;
+  color: #666666;
 }
 
 pre {
@@ -20,12 +19,12 @@ pre {
 }
 
 a {
-  color: #fff;
+  color: #777777;
   &:visited {
-    color: #fff;
+    color: #777777;
   }
   &:hover {
-    color: #fffccc;
+    color: #666666;
   }
 }
 
