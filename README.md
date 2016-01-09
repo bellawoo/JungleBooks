@@ -3,7 +3,7 @@
 A simple application that allows book club members to suggest and vote on books.
 
 ## Nifty Integrations
-The application utilizes Amazon ItemSearch API to provide members with information on books. If you are visiting this on production, you may notice that the Amazon results are erroring. This is becuase to use the Amazon Product Marketing API, I have to be registered as an Amazon affiliate. However, since I'm not monetizing anything, Amazon likes to close out my affiliate account after a while because I'm not making them any money.
+The application utilizes Amazon ItemSearch API to provide members with information on books. If you are visiting this on production, you may notice that the Amazon results are erroring. This is because to use the Amazon Product Marketing API, I have to be registered as an Amazon affiliate. However, since I'm not monetizing anything, Amazon likes to close out my affiliate account after a while because I'm not making them any money.
 
 Goodreads integration currently under construction. Once completed, members can add the winning book to their Goodreads shelf.
 
